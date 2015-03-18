@@ -10,6 +10,21 @@ package Principal;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.net.URL;
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
+import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import org.json.*;
 
 /**
  *
@@ -17,11 +32,19 @@ import java.awt.Toolkit;
  */
 public class Principal extends Mi_Ventana_200412823 {
 
+    public static OkHttpClient webClient = new OkHttpClient();
+    ConectarWebService miConexion;
+    public String miUsuarioo;
+    public String miClaveUsuarioo;
+    
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        miUsuarioo="";
+        miClaveUsuarioo="";
+        miConexion = new ConectarWebService();
     }
 
     /**
@@ -33,14 +56,203 @@ public class Principal extends Mi_Ventana_200412823 {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dialogo_NewUsuario = new javax.swing.JDialog();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        text_NewUsuarioNombre = new javax.swing.JTextField();
+        text_NewUsuarioPassword = new javax.swing.JPasswordField();
+        text_NewUsuarioNickName = new javax.swing.JTextField();
+        boton_NewUsuarioGuardar = new javax.swing.JButton();
+        boton_NewUsuarioCancelar = new javax.swing.JButton();
+        text_NewUsuarioDireccion = new javax.swing.JTextField();
+        text_NewUsuarioTelefono = new javax.swing.JTextField();
+        text_NewUsuarioCreditCard = new javax.swing.JTextField();
+        text_NewUsuarioDireccionActual = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         boton_LoginIniciar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        text_LoginClave = new javax.swing.JPasswordField();
-        text_LoginNickName = new javax.swing.JTextField();
+        text_LoginClaveUsuario = new javax.swing.JPasswordField();
+        text_LoginNombreUsuario = new javax.swing.JTextField();
         boton_LoginSignUp = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+
+        dialogo_NewUsuario.setTitle("Nuevo Aeropuerto");
+        dialogo_NewUsuario.setIconImage(getIconImage());
+        dialogo_NewUsuario.setMaximumSize(new java.awt.Dimension(500, 400));
+        dialogo_NewUsuario.setMinimumSize(new java.awt.Dimension(500, 400));
+        dialogo_NewUsuario.setModal(true);
+        dialogo_NewUsuario.setPreferredSize(new java.awt.Dimension(500, 400));
+        dialogo_NewUsuario.setResizable(false);
+        dialogo_NewUsuario.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                dialogo_NewUsuarioWindowOpened(evt);
+            }
+        });
+
+        jLabel5.setBackground(java.awt.Color.black);
+        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Ingrese los datos");
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Nombre ");
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Password");
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("NickName");
+
+        text_NewUsuarioNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_NewUsuarioNombre.setToolTipText("Nombre");
+
+        text_NewUsuarioPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_NewUsuarioPassword.setToolTipText("Password");
+
+        text_NewUsuarioNickName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_NewUsuarioNickName.setToolTipText("NickName");
+
+        boton_NewUsuarioGuardar.setBackground(java.awt.Color.green);
+        boton_NewUsuarioGuardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        boton_NewUsuarioGuardar.setForeground(java.awt.Color.black);
+        boton_NewUsuarioGuardar.setText("Guardar");
+        boton_NewUsuarioGuardar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        boton_NewUsuarioGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_NewUsuarioGuardarActionPerformed(evt);
+            }
+        });
+
+        boton_NewUsuarioCancelar.setBackground(java.awt.Color.red);
+        boton_NewUsuarioCancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        boton_NewUsuarioCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        boton_NewUsuarioCancelar.setText("Cancelar");
+        boton_NewUsuarioCancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        boton_NewUsuarioCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_NewUsuarioCancelarActionPerformed(evt);
+            }
+        });
+
+        text_NewUsuarioDireccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_NewUsuarioDireccion.setToolTipText("Direccion");
+
+        text_NewUsuarioTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_NewUsuarioTelefono.setToolTipText("Telefono");
+
+        text_NewUsuarioCreditCard.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_NewUsuarioCreditCard.setToolTipText("Tarjeta de credito");
+
+        text_NewUsuarioDireccionActual.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_NewUsuarioDireccionActual.setToolTipText("Direccion actual");
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Tarjeta de Credito");
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Direccion");
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Telefono");
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Direccion Actual");
+
+        javax.swing.GroupLayout dialogo_NewUsuarioLayout = new javax.swing.GroupLayout(dialogo_NewUsuario.getContentPane());
+        dialogo_NewUsuario.getContentPane().setLayout(dialogo_NewUsuarioLayout);
+        dialogo_NewUsuarioLayout.setHorizontalGroup(
+            dialogo_NewUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogo_NewUsuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dialogo_NewUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(dialogo_NewUsuarioLayout.createSequentialGroup()
+                        .addGroup(dialogo_NewUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(dialogo_NewUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(text_NewUsuarioNombre)
+                            .addComponent(text_NewUsuarioPassword)
+                            .addComponent(text_NewUsuarioNickName)
+                            .addComponent(text_NewUsuarioDireccion)
+                            .addComponent(text_NewUsuarioTelefono)
+                            .addComponent(text_NewUsuarioCreditCard)
+                            .addComponent(text_NewUsuarioDireccionActual, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE))))
+                .addContainerGap())
+            .addGroup(dialogo_NewUsuarioLayout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(boton_NewUsuarioGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(boton_NewUsuarioCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        dialogo_NewUsuarioLayout.setVerticalGroup(
+            dialogo_NewUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogo_NewUsuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(dialogo_NewUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(text_NewUsuarioNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dialogo_NewUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(text_NewUsuarioPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dialogo_NewUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(text_NewUsuarioNickName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dialogo_NewUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(text_NewUsuarioDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dialogo_NewUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(text_NewUsuarioTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dialogo_NewUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(text_NewUsuarioCreditCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dialogo_NewUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(text_NewUsuarioDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addGap(32, 32, 32)
+                .addGroup(dialogo_NewUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boton_NewUsuarioCancelar)
+                    .addComponent(boton_NewUsuarioGuardar))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controlador de Usuarios");
@@ -73,12 +285,12 @@ public class Principal extends Mi_Ventana_200412823 {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("LOGIN");
 
-        text_LoginClave.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        text_LoginClave.setToolTipText("Password");
+        text_LoginClaveUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_LoginClaveUsuario.setToolTipText("Password");
 
-        text_LoginNickName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        text_LoginNickName.setToolTipText("NickName");
-        text_LoginNickName.setName(""); // NOI18N
+        text_LoginNombreUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_LoginNombreUsuario.setToolTipText("NickName");
+        text_LoginNombreUsuario.setName(""); // NOI18N
 
         boton_LoginSignUp.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         boton_LoginSignUp.setForeground(java.awt.Color.blue);
@@ -108,12 +320,12 @@ public class Principal extends Mi_Ventana_200412823 {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(text_LoginNickName))
+                                .addComponent(text_LoginNombreUsuario))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(text_LoginClave, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 70, Short.MAX_VALUE))))
+                                .addComponent(text_LoginClaveUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -134,13 +346,13 @@ public class Principal extends Mi_Ventana_200412823 {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(text_LoginNickName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(text_LoginNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(text_LoginClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_LoginClaveUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_LoginIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,13 +364,137 @@ public class Principal extends Mi_Ventana_200412823 {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_LoginIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_LoginIniciarActionPerformed
-        // TODO add your handling code here:
+        try {
+            //miConexion.holaMundo(text_LoginNombreUsuario);
+            logueandoUsuario(text_LoginNombreUsuario.getText(), text_LoginClaveUsuario.getText());
+            limpiarTextosLoginUsuario();
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_boton_LoginIniciarActionPerformed
 
     private void boton_LoginSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_LoginSignUpActionPerformed
-        // TODO add your handling code here:
+        dialogo_NewUsuario.setLocationRelativeTo(null);
+        dialogo_NewUsuario.show();
     }//GEN-LAST:event_boton_LoginSignUpActionPerformed
 
+    private void dialogo_NewUsuarioWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dialogo_NewUsuarioWindowOpened
+        dialogo_NewUsuario.getContentPane().setBackground(new Color(0,0,0));
+    }//GEN-LAST:event_dialogo_NewUsuarioWindowOpened
+
+    private void boton_NewUsuarioCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_NewUsuarioCancelarActionPerformed
+        limpiarTextosNewUsuario();
+        dialogo_NewUsuario.dispose();
+    }//GEN-LAST:event_boton_NewUsuarioCancelarActionPerformed
+
+    private void boton_NewUsuarioGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_NewUsuarioGuardarActionPerformed
+        if (!text_NewUsuarioNombre.getText().isEmpty()&& !text_NewUsuarioPassword.getText().isEmpty()&&! text_NewUsuarioNickName.getText().isEmpty()){
+            int n = JOptionPane.showConfirmDialog(dialogo_NewUsuario, "Los datos son correctos?", "Confirme los datos",	JOptionPane.YES_NO_OPTION);
+            if (n==JOptionPane.YES_OPTION){
+                datosNewUsuario(text_NewUsuarioNombre.getText(), text_NewUsuarioPassword.getText(), text_NewUsuarioNickName.getText(),text_NewUsuarioDireccion.getText(),text_NewUsuarioTelefono.getText(),text_NewUsuarioCreditCard.getText(),text_NewUsuarioDireccionActual.getText());
+            }
+            else if(n==JOptionPane.NO_OPTION){
+                limpiarTextosNewUsuario();
+            }
+            else {
+                System.out.println("No se que paso");
+            }
+        }
+        else {
+            String message = "Todos los datos son obligatorios";
+            JOptionPane.showMessageDialog(dialogo_NewUsuario, message, "Warning", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_boton_NewUsuarioGuardarActionPerformed
+
+    private void logueandoUsuario(String nickkk, String paass) throws IOException{
+        if(!nickkk.isEmpty()&&!paass.isEmpty()){
+            if (cumpleNickname(nickkk, paass)){
+               if(miConexion.loguearAlUsuario(nickkk, paass)){
+                   miClaveUsuarioo=paass; miUsuarioo=nickkk;
+                    String message = "FELICIDADES TE HAS LOGUEADO";
+                    JOptionPane.showMessageDialog(dialogo_NewUsuario, message, "Warning", JOptionPane.ERROR_MESSAGE);
+                }
+               else{
+                   System.out.println("*********************NO EXISTE ESTE MALDITO USUARIO**************");
+               }
+            }
+        }
+    }
+    
+    private void limpiarTextosLoginUsuario(){
+        text_LoginNombreUsuario.setText("");
+        text_LoginClaveUsuario.setText("");
+    }
+    
+    private void limpiarTextosNewUsuario(){
+        text_NewUsuarioNombre.setText("");
+        text_NewUsuarioNickName.setText("");
+        text_NewUsuarioPassword.setText("");
+        text_NewUsuarioDireccion.setText("");
+        text_NewUsuarioTelefono.setText("");
+        text_NewUsuarioCreditCard.setText("");
+        text_NewUsuarioDireccionActual.setText("");
+    }
+    
+    private boolean datosNewUsuario(String nombre, String Passw, String NickNamee,String Direc,String Telef,String CreditCard,String DirActual){
+        if (!nombre.isEmpty()&&!Passw.isEmpty()&&!NickNamee.isEmpty()&&!Direc.isEmpty()&&!Telef.isEmpty()&&!CreditCard.isEmpty()&&!DirActual.isEmpty()){
+            try {
+                if (cumpleNickname(NickNamee, Passw)){
+                    miConexion.crearUsuario(nombre, Passw, NickNamee,Direc,Telef,CreditCard,DirActual);
+                    limpiarTextosNewUsuario();
+                    return true;
+                }   
+                else{
+                    String message = "Ingrese de nuevo los datos  \n    No cumple con el estilo del NickName  \n       Debe de Iniciar con una letra ";
+                    JOptionPane.showMessageDialog(dialogo_NewUsuario, message, "Warning", JOptionPane.ERROR_MESSAGE);
+                    limpiarTextosNewUsuario();
+                    return false;
+                }
+            } 
+            catch (IOException ex) {                
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);                
+                limpiarTextosNewUsuario();
+                return false;
+            }            
+        }
+        else{
+            return false;
+        }
+    }
+    
+    private boolean cumpleNickname(String nickname, String Passs){
+        if(!nickname.isEmpty()&&!Passs.isEmpty()){
+            Pattern pat = Pattern.compile("[^[a-zA-Z]|^[ñ|Ñ]].*");
+            Matcher mat = pat.matcher(nickname);
+            if (mat.matches()) {
+                
+                 System.out.println("SI");
+                 return true;
+            } else {
+            System.out.println("NO");
+            String message = "Ingrese de nuevo los datos  \n    No cumple con el estilo del NickName  \n       Debe de Iniciar con una letra ";
+            JOptionPane.showMessageDialog(dialogo_NewUsuario, message, "Warning", JOptionPane.ERROR_MESSAGE);
+             return false;
+            }
+        }
+        else {
+            String message = "Todos los datos son obligatorios";
+            JOptionPane.showMessageDialog(dialogo_NewUsuario, message, "Warning", JOptionPane.ERROR_MESSAGE);
+            limpiarTextosNewUsuario();
+            limpiarTextosLoginUsuario();
+            return false;
+        }
+    }  
+    
+    private boolean datosLoguear(String NombreAero, String Passs){
+        if(!NombreAero.isEmpty()&&!Passs.isEmpty()){
+            return true;
+        }
+        else{
+            return false;
+        }        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -211,11 +547,29 @@ public class Principal extends Mi_Ventana_200412823 {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_LoginIniciar;
     private javax.swing.JButton boton_LoginSignUp;
+    private javax.swing.JButton boton_NewUsuarioCancelar;
+    private javax.swing.JButton boton_NewUsuarioGuardar;
+    private javax.swing.JDialog dialogo_NewUsuario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField text_LoginClave;
-    private javax.swing.JTextField text_LoginNickName;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPasswordField text_LoginClaveUsuario;
+    private javax.swing.JTextField text_LoginNombreUsuario;
+    private javax.swing.JTextField text_NewUsuarioCreditCard;
+    private javax.swing.JTextField text_NewUsuarioDireccion;
+    private javax.swing.JTextField text_NewUsuarioDireccionActual;
+    private javax.swing.JTextField text_NewUsuarioNickName;
+    private javax.swing.JTextField text_NewUsuarioNombre;
+    private javax.swing.JPasswordField text_NewUsuarioPassword;
+    private javax.swing.JTextField text_NewUsuarioTelefono;
     // End of variables declaration//GEN-END:variables
 }
