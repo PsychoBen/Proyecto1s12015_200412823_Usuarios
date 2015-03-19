@@ -74,6 +74,39 @@ public class Principal extends Mi_Ventana_200412823 {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        dialogo_UsuarioLogueado = new javax.swing.JDialog();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        pane_InformacionUser = new javax.swing.JPanel();
+        pane_VerInfoVuelos = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla_InfoVuelos = new javax.swing.JTable();
+        pane_InfoAsignacionVuelos = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        texto_sale = new javax.swing.JTextField();
+        texto_llega = new javax.swing.JTextField();
+        texto_horaSale = new javax.swing.JTextField();
+        texto_fechaSale = new javax.swing.JTextField();
+        texto_horaLlega = new javax.swing.JTextField();
+        texto_fechaLlega = new javax.swing.JTextField();
+        label1 = new java.awt.Label();
+        label2 = new java.awt.Label();
+        label3 = new java.awt.Label();
+        label4 = new java.awt.Label();
+        texto_CostoFirstClase = new javax.swing.JTextField();
+        texxtoPrimera = new javax.swing.JTextField();
+        texto_costoTurista = new javax.swing.JTextField();
+        texxtoEjecutiva = new javax.swing.JTextField();
+        texto_CostoEjecutiva = new javax.swing.JTextField();
+        texxtoTurista = new javax.swing.JTextField();
+        label5 = new java.awt.Label();
+        label6 = new java.awt.Label();
+        label7 = new java.awt.Label();
+        label8 = new java.awt.Label();
+        boton_AsignarVuelo = new javax.swing.JButton();
+        etiqueta_UserName = new java.awt.Label();
+        comboBoxCategorias = new javax.swing.JComboBox();
+        comboBoxCodigoVuelos = new javax.swing.JComboBox();
+        jButton3 = new javax.swing.JButton();
         boton_LoginIniciar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -85,10 +118,8 @@ public class Principal extends Mi_Ventana_200412823 {
 
         dialogo_NewUsuario.setTitle("Nuevo Aeropuerto");
         dialogo_NewUsuario.setIconImage(getIconImage());
-        dialogo_NewUsuario.setMaximumSize(new java.awt.Dimension(500, 400));
         dialogo_NewUsuario.setMinimumSize(new java.awt.Dimension(500, 400));
         dialogo_NewUsuario.setModal(true);
-        dialogo_NewUsuario.setPreferredSize(new java.awt.Dimension(500, 400));
         dialogo_NewUsuario.setResizable(false);
         dialogo_NewUsuario.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -254,6 +285,363 @@ public class Principal extends Mi_Ventana_200412823 {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
+        dialogo_UsuarioLogueado.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        dialogo_UsuarioLogueado.setTitle("Aciones usuario");
+        dialogo_UsuarioLogueado.setMinimumSize(new java.awt.Dimension(700, 500));
+        dialogo_UsuarioLogueado.setModal(true);
+        dialogo_UsuarioLogueado.setResizable(false);
+        dialogo_UsuarioLogueado.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                dialogo_UsuarioLogueadoWindowOpened(evt);
+            }
+        });
+
+        jTabbedPane1.setBackground(java.awt.Color.black);
+        jTabbedPane1.setForeground(java.awt.Color.white);
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(600, 400));
+        jTabbedPane1.setOpaque(true);
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(600, 400));
+
+        pane_InformacionUser.setBackground(java.awt.Color.black);
+        pane_InformacionUser.setForeground(java.awt.Color.white);
+
+        javax.swing.GroupLayout pane_InformacionUserLayout = new javax.swing.GroupLayout(pane_InformacionUser);
+        pane_InformacionUser.setLayout(pane_InformacionUserLayout);
+        pane_InformacionUserLayout.setHorizontalGroup(
+            pane_InformacionUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 642, Short.MAX_VALUE)
+        );
+        pane_InformacionUserLayout.setVerticalGroup(
+            pane_InformacionUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 408, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Informacion", pane_InformacionUser);
+
+        pane_VerInfoVuelos.setBackground(java.awt.Color.black);
+        pane_VerInfoVuelos.setForeground(java.awt.Color.white);
+
+        tabla_InfoVuelos.setBackground(java.awt.Color.darkGray);
+        tabla_InfoVuelos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tabla_InfoVuelos.setMinimumSize(new java.awt.Dimension(300, 64));
+        jScrollPane1.setViewportView(tabla_InfoVuelos);
+
+        javax.swing.GroupLayout pane_VerInfoVuelosLayout = new javax.swing.GroupLayout(pane_VerInfoVuelos);
+        pane_VerInfoVuelos.setLayout(pane_VerInfoVuelosLayout);
+        pane_VerInfoVuelosLayout.setHorizontalGroup(
+            pane_VerInfoVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pane_VerInfoVuelosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pane_VerInfoVuelosLayout.setVerticalGroup(
+            pane_VerInfoVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pane_VerInfoVuelosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Ver vuelos", pane_VerInfoVuelos);
+
+        pane_InfoAsignacionVuelos.setBackground(java.awt.Color.black);
+        pane_InfoAsignacionVuelos.setForeground(java.awt.Color.white);
+
+        jButton1.setBackground(new java.awt.Color(204, 255, 204));
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButton1.setForeground(java.awt.Color.black);
+        jButton1.setText("Refresh");
+        jButton1.setBorder(new javax.swing.border.MatteBorder(null));
+
+        texto_sale.setEditable(false);
+        texto_sale.setBackground(new java.awt.Color(153, 153, 153));
+        texto_sale.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        texto_sale.setToolTipText("Salida");
+
+        texto_llega.setEditable(false);
+        texto_llega.setBackground(new java.awt.Color(153, 153, 153));
+        texto_llega.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        texto_llega.setToolTipText("Llegada");
+
+        texto_horaSale.setEditable(false);
+        texto_horaSale.setBackground(new java.awt.Color(153, 153, 153));
+        texto_horaSale.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        texto_horaSale.setToolTipText("hora salida");
+
+        texto_fechaSale.setEditable(false);
+        texto_fechaSale.setBackground(new java.awt.Color(153, 153, 153));
+        texto_fechaSale.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        texto_fechaSale.setToolTipText("fech salida");
+
+        texto_horaLlega.setEditable(false);
+        texto_horaLlega.setBackground(new java.awt.Color(153, 153, 153));
+        texto_horaLlega.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        texto_horaLlega.setToolTipText("Hora llegada");
+
+        texto_fechaLlega.setEditable(false);
+        texto_fechaLlega.setBackground(new java.awt.Color(153, 153, 153));
+        texto_fechaLlega.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        texto_fechaLlega.setToolTipText("fecha llegada");
+
+        label1.setAlignment(java.awt.Label.CENTER);
+        label1.setForeground(java.awt.Color.white);
+        label1.setText("llegada");
+
+        label2.setAlignment(java.awt.Label.CENTER);
+        label2.setForeground(java.awt.Color.white);
+        label2.setText("salida");
+
+        label3.setAlignment(java.awt.Label.CENTER);
+        label3.setForeground(java.awt.Color.white);
+        label3.setText("fecha / hora salida");
+
+        label4.setAlignment(java.awt.Label.CENTER);
+        label4.setForeground(java.awt.Color.white);
+        label4.setText("fecha / hora Llegada");
+
+        texto_CostoFirstClase.setEditable(false);
+        texto_CostoFirstClase.setBackground(new java.awt.Color(153, 153, 153));
+        texto_CostoFirstClase.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        texto_CostoFirstClase.setToolTipText("costo");
+
+        texxtoPrimera.setEditable(false);
+        texxtoPrimera.setBackground(new java.awt.Color(153, 153, 153));
+        texxtoPrimera.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        texxtoPrimera.setText("PRIMERA");
+        texxtoPrimera.setToolTipText("Clase");
+
+        texto_costoTurista.setEditable(false);
+        texto_costoTurista.setBackground(new java.awt.Color(153, 153, 153));
+        texto_costoTurista.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        texto_costoTurista.setToolTipText("Costo");
+
+        texxtoEjecutiva.setEditable(false);
+        texxtoEjecutiva.setBackground(new java.awt.Color(153, 153, 153));
+        texxtoEjecutiva.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        texxtoEjecutiva.setText("EJECUTIVA");
+        texxtoEjecutiva.setToolTipText("Clase");
+
+        texto_CostoEjecutiva.setEditable(false);
+        texto_CostoEjecutiva.setBackground(new java.awt.Color(153, 153, 153));
+        texto_CostoEjecutiva.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        texto_CostoEjecutiva.setToolTipText("costo");
+
+        texxtoTurista.setEditable(false);
+        texxtoTurista.setBackground(new java.awt.Color(153, 153, 153));
+        texxtoTurista.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        texxtoTurista.setText("TURISTA");
+        texxtoTurista.setToolTipText("Clase");
+
+        label5.setAlignment(java.awt.Label.CENTER);
+        label5.setForeground(new java.awt.Color(255, 255, 255));
+        label5.setText("Clase / Costo");
+
+        label6.setAlignment(java.awt.Label.CENTER);
+        label6.setForeground(new java.awt.Color(255, 255, 255));
+        label6.setText("Clase / Costo");
+
+        label7.setAlignment(java.awt.Label.CENTER);
+        label7.setForeground(new java.awt.Color(255, 255, 255));
+        label7.setText("Clase / Costo");
+
+        label8.setAlignment(java.awt.Label.CENTER);
+        label8.setForeground(new java.awt.Color(255, 255, 255));
+        label8.setText("Escoja la categoria");
+
+        boton_AsignarVuelo.setBackground(new java.awt.Color(204, 204, 255));
+        boton_AsignarVuelo.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        boton_AsignarVuelo.setForeground(new java.awt.Color(0, 0, 0));
+        boton_AsignarVuelo.setText("Asignar Vuelo");
+        boton_AsignarVuelo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        boton_AsignarVuelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_AsignarVueloActionPerformed(evt);
+            }
+        });
+
+        etiqueta_UserName.setAlignment(java.awt.Label.CENTER);
+        etiqueta_UserName.setForeground(new java.awt.Color(255, 255, 255));
+        etiqueta_UserName.setText("Bienvenido: ");
+
+        comboBoxCategorias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primera Clase", "Clase Ejecutiva", "Clase Turista" }));
+
+        comboBoxCodigoVuelos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton3.setBackground(new java.awt.Color(153, 0, 0));
+        jButton3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButton3.setForeground(java.awt.Color.black);
+        jButton3.setText("Sign out");
+        jButton3.setToolTipText("salir");
+        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pane_InfoAsignacionVuelosLayout = new javax.swing.GroupLayout(pane_InfoAsignacionVuelos);
+        pane_InfoAsignacionVuelos.setLayout(pane_InfoAsignacionVuelosLayout);
+        pane_InfoAsignacionVuelosLayout.setHorizontalGroup(
+            pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                        .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(boton_AsignarVuelo, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                            .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                                    .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                                            .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(texxtoEjecutiva, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                                                .addComponent(texxtoTurista))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(texto_costoTurista, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(texto_CostoEjecutiva, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                                            .addComponent(texxtoPrimera, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                            .addComponent(texto_CostoFirstClase, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(texto_sale, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(texto_llega, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                                            .addComponent(texto_horaSale, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(texto_fechaSale, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                                            .addComponent(texto_horaLlega, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(texto_fechaLlega, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(label7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                                    .addComponent(comboBoxCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(label8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE))
+                    .addComponent(comboBoxCodigoVuelos, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                            .addGap(78, 78, 78)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(etiqueta_UserName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        pane_InfoAsignacionVuelosLayout.setVerticalGroup(
+            pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboBoxCodigoVuelos, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etiqueta_UserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                        .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                                .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(texto_sale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)))
+                        .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(texto_llega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(texto_horaSale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(texto_fechaSale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(texto_horaLlega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(texto_fechaLlega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                        .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(texxtoPrimera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(texto_CostoFirstClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(texxtoEjecutiva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(texto_CostoEjecutiva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                                .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17)
+                                .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                                .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(texto_costoTurista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(texxtoTurista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(22, 22, 22)
+                                .addComponent(comboBoxCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(pane_InfoAsignacionVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pane_InfoAsignacionVuelosLayout.createSequentialGroup()
+                        .addComponent(boton_AsignarVuelo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))))
+        );
+
+        etiqueta_UserName.getAccessibleContext().setAccessibleDescription("");
+
+        jTabbedPane1.addTab("Asignacion", pane_InfoAsignacionVuelos);
+
+        javax.swing.GroupLayout dialogo_UsuarioLogueadoLayout = new javax.swing.GroupLayout(dialogo_UsuarioLogueado.getContentPane());
+        dialogo_UsuarioLogueado.getContentPane().setLayout(dialogo_UsuarioLogueadoLayout);
+        dialogo_UsuarioLogueadoLayout.setHorizontalGroup(
+            dialogo_UsuarioLogueadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogo_UsuarioLogueadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        dialogo_UsuarioLogueadoLayout.setVerticalGroup(
+            dialogo_UsuarioLogueadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogo_UsuarioLogueadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controlador de Usuarios");
         setIconImage(getIconImage());
@@ -406,18 +794,44 @@ public class Principal extends Mi_Ventana_200412823 {
         }
     }//GEN-LAST:event_boton_NewUsuarioGuardarActionPerformed
 
+    private void dialogo_UsuarioLogueadoWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dialogo_UsuarioLogueadoWindowOpened
+        dialogo_UsuarioLogueado.getContentPane().setBackground(new Color(0,0,0));
+        etiqueta_UserName.setText("Bienvenido:   "+miUsuarioo);
+    }//GEN-LAST:event_dialogo_UsuarioLogueadoWindowOpened
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        dialogo_UsuarioLogueado.dispose();
+        miClaveUsuarioo="";
+        miUsuarioo="";
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void boton_AsignarVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AsignarVueloActionPerformed
+        try {
+            miConexion.AsignarseAlVuelo(comboBoxCodigoVuelos.getSelectedItem().toString(),miUsuarioo,comboBoxCategorias.getSelectedItem().toString());
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_boton_AsignarVueloActionPerformed
+
     private void logueandoUsuario(String nickkk, String paass) throws IOException{
         if(!nickkk.isEmpty()&&!paass.isEmpty()){
             if (cumpleNickname(nickkk, paass)){
                if(miConexion.loguearAlUsuario(nickkk, paass)){
                    miClaveUsuarioo=paass; miUsuarioo=nickkk;
                     String message = "FELICIDADES TE HAS LOGUEADO";
-                    JOptionPane.showMessageDialog(dialogo_NewUsuario, message, "Warning", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, message, "Warning", JOptionPane.INFORMATION_MESSAGE);
+                    limpiarTextosLoginUsuario();
+                    dialogo_UsuarioLogueado.setLocationRelativeTo(null);
+                    dialogo_UsuarioLogueado.show();
                 }
                else{
-                   System.out.println("*********************NO EXISTE ESTE MALDITO USUARIO**************");
+                    String message = "Usuario no encontrado \n    Revisa los datos";
+                    JOptionPane.showMessageDialog(this, message, "Warning", JOptionPane.ERROR_MESSAGE);
                }
             }
+        }else{
+            String message = "Debe ingresar los datos requeridos";
+            JOptionPane.showMessageDialog(this, message, "Warning", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -545,11 +959,18 @@ public class Principal extends Mi_Ventana_200412823 {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton boton_AsignarVuelo;
     private javax.swing.JButton boton_LoginIniciar;
     private javax.swing.JButton boton_LoginSignUp;
     private javax.swing.JButton boton_NewUsuarioCancelar;
     private javax.swing.JButton boton_NewUsuarioGuardar;
+    private javax.swing.JComboBox comboBoxCategorias;
+    private javax.swing.JComboBox comboBoxCodigoVuelos;
     private javax.swing.JDialog dialogo_NewUsuario;
+    private javax.swing.JDialog dialogo_UsuarioLogueado;
+    public static java.awt.Label etiqueta_UserName;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -562,6 +983,20 @@ public class Principal extends Mi_Ventana_200412823 {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private java.awt.Label label1;
+    private java.awt.Label label2;
+    private java.awt.Label label3;
+    private java.awt.Label label4;
+    private java.awt.Label label5;
+    private java.awt.Label label6;
+    private java.awt.Label label7;
+    private java.awt.Label label8;
+    private javax.swing.JPanel pane_InfoAsignacionVuelos;
+    private javax.swing.JPanel pane_InformacionUser;
+    private javax.swing.JPanel pane_VerInfoVuelos;
+    private javax.swing.JTable tabla_InfoVuelos;
     private javax.swing.JPasswordField text_LoginClaveUsuario;
     private javax.swing.JTextField text_LoginNombreUsuario;
     private javax.swing.JTextField text_NewUsuarioCreditCard;
@@ -571,5 +1006,17 @@ public class Principal extends Mi_Ventana_200412823 {
     private javax.swing.JTextField text_NewUsuarioNombre;
     private javax.swing.JPasswordField text_NewUsuarioPassword;
     private javax.swing.JTextField text_NewUsuarioTelefono;
+    private javax.swing.JTextField texto_CostoEjecutiva;
+    private javax.swing.JTextField texto_CostoFirstClase;
+    private javax.swing.JTextField texto_costoTurista;
+    private javax.swing.JTextField texto_fechaLlega;
+    private javax.swing.JTextField texto_fechaSale;
+    private javax.swing.JTextField texto_horaLlega;
+    private javax.swing.JTextField texto_horaSale;
+    private javax.swing.JTextField texto_llega;
+    private javax.swing.JTextField texto_sale;
+    private javax.swing.JTextField texxtoEjecutiva;
+    private javax.swing.JTextField texxtoPrimera;
+    private javax.swing.JTextField texxtoTurista;
     // End of variables declaration//GEN-END:variables
 }

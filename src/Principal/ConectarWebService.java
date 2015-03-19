@@ -97,14 +97,15 @@ public class ConectarWebService {
                 .build();
 
 	Request request = new Request.Builder().url(url).post(formBody).build();
-        System.out.println("*******************************************************");
-        System.out.println("*******************************************************");
-        System.out.println("*******************************************************");
         System.out.println(request);
 	Response response = webClient.newCall(request).execute();
 	String response_string = response.body().string();
-        System.out.println("********************* Este se ingreso ************************+");
-	System.out.println(response_string);
+        if(response_string.equalsIgnoreCase("success")){
+            System.out.println("******** GUARDADO CON EXITO *********");
+        }else {
+             System.out.println("******** NO SE PUEDE *********");
+        }
+        //return devuelve;
         
     }
     
@@ -118,13 +119,13 @@ public class ConectarWebService {
     }
     
     //este metodo servira para saber si se logueo 
-    public boolean  loguearAlUsuario(String nicc,String passs) throws IOException{
+    public boolean  loguearAlUsuario(String niccc,String passs) throws IOException{
         boolean devuelve=false;
        URL url = new URL("http://localhost:5000/usuario/loguear");
 
 	RequestBody formBody = new FormEncodingBuilder()
-                .add("Nicck", nicc)
-                .add("Passw", passs)                        
+                .add("Nicckkk", niccc)
+                .add("Passwwww", passs)                        
                 .build();
 
 	Request request = new Request.Builder().url(url).post(formBody).build();
@@ -138,5 +139,46 @@ public class ConectarWebService {
         }
         return devuelve;
     }
+    
+    //este metodo servira para asignar a un usuario a un vuelo
+    public void AsignarseAlVuelo(String codigoVuelo, String niccc,String Categoria) throws IOException{
+      
+       URL url = new URL("http://localhost:5000/usuario/agregarAlVuelo");
+
+	RequestBody formBody = new FormEncodingBuilder()               
+                .add("IdVuelo", codigoVuelo)            
+                .add("NameUsuario", niccc)
+                .add("Categoria", Categoria)
+                .build();
+
+	Request request = new Request.Builder().url(url).post(formBody).build();
+        System.out.println(request);
+	Response response = webClient.newCall(request).execute();
+	String response_string = response.body().string();
+        System.out.println("Felicidades");     
+    }
+    
+    //este metodo servira para saber si se logueo  el aeropuerto
+    public boolean  loguearAlAeropuerto(String niccc,String passs) throws IOException{
+        boolean devuelve=false;
+       URL url = new URL("http://localhost:5000/usuario/loguearAeropuerto");
+
+	RequestBody formBody = new FormEncodingBuilder()
+                .add("Nicckkk", niccc)
+                .add("Passwwww", passs)                        
+                .build();
+
+	Request request = new Request.Builder().url(url).post(formBody).build();
+        System.out.println(request);
+	Response response = webClient.newCall(request).execute();
+	String response_string = response.body().string();
+        if(response_string.equalsIgnoreCase("success")){
+            devuelve=true;
+        }else {
+            devuelve=false;
+        }
+        return devuelve;
+    }
+    
     
 }
